@@ -1,14 +1,12 @@
 <template>
   <div id="app" class="mt-20">
     <router-view />
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import './src/assets/styles/index.scss';
+
 #app {
   text-align: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -16,21 +14,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  position: absolute;
-  left: 0;
-  right: 0;
+  max-width: 800px;
   margin: auto;
-  bottom: 0;
-  padding: 30px;
-  text-align: center;
-}
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-  color: #42b983;
+  background-color: $background-color-dark-mode;
 }
 </style>

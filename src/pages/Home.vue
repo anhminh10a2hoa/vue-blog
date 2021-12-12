@@ -4,3 +4,7 @@
 <template>
   <p>Home</p>
 </template>
+
+<style lang="scss">
+
+</style>
