@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-  @import './src/assets/styles/index.scss';
+  @import '@/assets/styles/index.scss';
 
   #app {
     text-align: center;
