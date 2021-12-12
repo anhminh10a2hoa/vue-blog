@@ -1,5 +1,10 @@
+<script setup lang="ts">
+  import NavBar from '@/components/NavBar.vue'
+</script>
+
 <template>
-  <div id="app" class="mt-20">
+  <div id="container">
+    <NavBar />
     <router-view />
   </div>
 </template>
@@ -8,14 +13,14 @@
   @import '@/assets/styles/index.scss';
 
   #app {
-    text-align: center;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    max-width: 800px;
-    margin: auto;
     background-color: $background-color-dark-mode;
+    color: $text-color-dark-mode;
+    height: 100vh;
+  }
+
+  #container {
+    text-align: center;
+    margin: auto;
+    max-width: 760px;
   }
 </style>

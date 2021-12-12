@@ -7,6 +7,10 @@
     "preview": "vite preview",
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint --fix",
+    "*": "prettier -w -u"
+  },
   "dependencies": {
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
