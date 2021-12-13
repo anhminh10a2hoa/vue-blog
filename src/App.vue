@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss">
-  @import '@/assets/styles/index.scss';
+  /* @import '@/assets/styles/index.scss'; */
 
   #app {
     background-color: $background-color-dark-mode;
