@@ -18,19 +18,13 @@ export default defineComponent({
 
 <template>
   <nav class="navbar">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
+    <div class="logo-container">
+      <img class="logo" src="../assets/images/logo-image.png" />
+      <p>Minh Hoang</p>
     </div>
     <ul class="menu" id="menu">
-      <li><a href="#">Works</a></li>
-      <li><a href="#">Posts</a></li>
+      <li><router-link to="/work">Work</router-link></li>
+      <li><router-link to="/blog">Blog</router-link></li>
     </ul>
 
     <div class="menu-bar" id="menu-bar">
@@ -49,19 +43,19 @@ export default defineComponent({
   position: relative;
   grid-template-columns: repeat(8, 1fr);
   align-items: center;
-  box-shadow: 0 0 10px rgba(121, 142, 160, 0.164);
   height: 56px;
 
-  svg {
-    width: 30px;
-    color: #333;
-  }
-
-  .logo {
+  .logo-container {
     position: relative;
     display: flex;
-    grid-column: 1/2;
+    grid-column: 1/3;
     justify-content: center;
+    align-items: center;
+
+    .logo {
+      height: 30px;
+      margin-right: 5px;
+    }
   }
 
   .menu {
@@ -78,6 +72,12 @@ export default defineComponent({
 
     li {
       list-style: none;
+
+      &:hover {
+        a {
+          border-bottom: 1px solid white;
+        }
+      }
     }
 
     a {
@@ -110,7 +110,7 @@ export default defineComponent({
 
     .menu {
       position: relative;
-      grid-column: 4/6;
+      grid-column: 3/5;
       display: flex;
       justify-content: space-around;
       align-items: center;

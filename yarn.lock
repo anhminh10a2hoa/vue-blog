@@ -1599,6 +1599,11 @@ vscode-vue-languageservice@0.28.10:
     vscode-pug-languageservice "0.28.10"
     vscode-typescript-languageservice "0.28.10"
 
+vue-awesome@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-4.3.1.tgz#3d5684a931714277c3015e024f35e231e4265fa3"
+  integrity sha512-8FRCtO12pNDp2o2XKVIc7HApMFrws42rR9+AiDYjW6lsHbhMy0ygvhaByNEGlQSbp2gb3ZZkeV0UJxKdur5c1Q==
+
 vue-eslint-parser@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-8.0.1.tgz#25e08b20a414551531f3e19f999902e1ecf45f13"

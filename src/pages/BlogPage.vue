@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>Home Page</div>
+  <div>Blog page</div>
 </template>
 
 <style lang="scss"></style>
