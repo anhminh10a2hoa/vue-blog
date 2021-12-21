@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue';
 </script>
 
 <template>
@@ -10,17 +10,17 @@
 </template>
 
 <style lang="scss">
-  /* @import '@/assets/styles/index.scss'; */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-  #app {
-    background-color: $background-color-dark-mode;
-    color: $text-color-dark-mode;
-    height: 100vh;
-  }
-
-  #container {
-    text-align: center;
-    margin: auto;
-    max-width: 760px;
-  }
+#app {
+  background-color: $background-color-dark-mode;
+  color: $text-color-dark-mode;
+  height: 100vh;
+  font-family: 'OpenSans', sans-serif;
+}
+#container {
+  text-align: center;
+  margin: auto;
+  max-width: 760px;
+}
 </style>

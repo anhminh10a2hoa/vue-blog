@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>Home</div>
+  <div></div>
 </template>
 
 <style lang="scss"></style>
