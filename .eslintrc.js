@@ -26,7 +26,8 @@ module.exports = {
     ],
     'no-console': import.meta.env.MODE === 'production' ? 'warn' : 'off',
     'no-debugger': import.meta.env.MODE === 'production' ? 'warn' : 'off',
-    'vue/no-unused-vars': 'off'
+    'vue/no-unused-vars': 'off',
+    'vue/no-parsing-error': 'off'
   },
   ignorePatterns: ['node_modules', 'build', 'dist']
 };
