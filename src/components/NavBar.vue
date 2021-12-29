@@ -26,8 +26,19 @@ export default defineComponent({
       }
     },
     onChangeMode: function () {
-      this.isDarkMode = !this.isDarkMode;
       const appContainer: HTMLElement | null = document.getElementById('app');
+      const modeIcon: HTMLElement | null = document.getElementById('mode-icon');
+      this.isDarkMode = !this.isDarkMode;
+      if (modeIcon) {
+        modeIcon.style.transform = 'translateY(120%)';
+        setTimeout(() => {
+          modeIcon.style.visibility = 'hidden';
+        }, 150);
+        setTimeout(() => {
+          modeIcon.style.visibility = 'visible';
+          modeIcon.style.transform = 'translateY(0%)';
+        }, 300);
+      }
       if (appContainer) {
         if (this.isDarkMode) {
           appContainer.style.backgroundColor = 'rgb(32, 32, 35)';
@@ -44,8 +55,8 @@ export default defineComponent({
 <template>
   <nav :class="{ darkModeNavbar: isDarkMode, lightModeNavbar: !isDarkMode }" class="navbar">
     <div class="logo-container">
-      <img class="logo" src="../assets/images/logo-image.png" />
-      <p>Minh Hoang</p>
+      <img class="logo" src="../assets/images/logo-image-1.png" />
+      <p>Anonymous dev</p>
     </div>
     <ul class="menu" id="menu">
       <li :class="{ activeNavbar: activeNavbar }"><router-link to="/work">Works</router-link></li>
@@ -57,18 +68,14 @@ export default defineComponent({
       </li>
     </ul>
     <div class="selection-container">
-      <div
-        :class="{ darkModeContainer: isDarkMode, lightModeContainer: !isDarkMode }"
-        class="item-container"
-        v-on:click="onChangeMode"
-      >
+      <div class="item-container" v-on:click="onChangeMode" id="mode-icon">
         <svg
           v-if="isDarkMode"
           aria-hidden="true"
           focusable="false"
           data-prefix="far"
           data-icon="lightbulb"
-          class="svg-inline--fa fa-lightbulb fa-w-11 mode-icon"
+          class="svg-inline--fa fa-lightbulb fa-w-11 navbar-icon"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 352 512"
@@ -84,7 +91,7 @@ export default defineComponent({
           focusable="false"
           data-prefix="far"
           data-icon="moon"
-          class="svg-inline--fa fa-moon fa-w-16 mode-icon"
+          class="svg-inline--fa fa-moon fa-w-16 navbar-icon"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -95,17 +102,13 @@ export default defineComponent({
           ></path>
         </svg>
       </div>
-      <div
-        :class="{ darkModeMenuBarContainer: isDarkMode, lightModeMenuBarContainer: !isDarkMode }"
-        class="item-container menu-bar-icon"
-        v-on:click="activeMenuBar"
-      >
+      <div class="item-container menu-bar-icon" v-on:click="activeMenuBar">
         <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
           data-icon="bars"
-          class="svg-inline--fa fa-bars fa-w-14 mode-icon"
+          class="svg-inline--fa fa-bars fa-w-14 navbar-icon"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
@@ -118,9 +121,12 @@ export default defineComponent({
       </div>
     </div>
     <div class="menu-bar-container" id="menu-bar-container">
-      <div>Works</div>
-      <div>Blogs</div>
-      <div>View source</div>
+      <div class="menu-bar-item"><router-link to="/blog">About</router-link></div>
+      <div class="menu-bar-item"><router-link to="/blog">Work</router-link></div>
+      <div class="menu-bar-item"><router-link to="/blog">Blogs</router-link></div>
+      <div class="menu-bar-item">
+        <a target="_blank" href="https://github.com/anhminh10a2hoa/my-blog-vue">View Source </a>
+      </div>
     </div>
   </nav>
 </template>
@@ -139,6 +145,26 @@ export default defineComponent({
 
   .menu-bar-container {
     background-color: $dark-mode-bg-color-menu-bar;
+    .menu-bar-item a {
+      color: $text-color-dark-mode;
+    }
+  }
+
+  .selection-container {
+    .item-container {
+      background-color: $dark-mode-bg-color;
+
+      &:hover {
+        background-color: $dark-mode-bg-color-hover;
+      }
+    }
+    .menu-bar-icon {
+      background-color: $background-color-dark-mode;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      &:hover {
+        background-color: #29292b;
+      }
+    }
   }
 }
 
@@ -154,7 +180,27 @@ export default defineComponent({
   }
 
   .menu-bar-container {
-    background-color: $light-mode-bg-color-menu-bar;
+    .menu-bar-item a {
+      color: $text-color-light-mode;
+    }
+    background-color: $light-mode-menu-bar;
+  }
+
+  .selection-container {
+    .item-container {
+      background-color: $light-mode-bg-color;
+      &:hover {
+        background-color: $light-mode-bg-color-hover;
+      }
+    }
+
+    .menu-bar-icon {
+      background-color: $background-color-light-mode-navbar;
+      border: 1px solid $light-mode-border-navbar-icon;
+      &:hover {
+        background-color: rgb(225, 242, 247);
+      }
+    }
   }
 }
 
@@ -175,10 +221,17 @@ export default defineComponent({
     .logo {
       height: $navbar-logo-size;
       margin-right: 5px;
+      transition: 0.5s;
+
+      &:hover {
+        transform: rotate(360deg);
+      }
     }
 
     p {
-      font-weight: 700;
+      font-weight: 400;
+      font-size: $text-logo-font-size;
+      color: $text-logo-color;
     }
   }
 
@@ -190,7 +243,7 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     display: none;
 
     li {
@@ -207,6 +260,7 @@ export default defineComponent({
     a {
       text-decoration: none;
       font-weight: 0;
+      font-weight: 300;
     }
 
     .activeNavbar {
@@ -243,38 +297,11 @@ export default defineComponent({
     border-radius: 10px;
     margin-left: 8px;
     cursor: pointer;
+    transition: all 0.15s;
 
-    .mode-icon {
+    .navbar-icon {
       width: $navbar-icon-size;
       height: $navbar-icon-size;
-    }
-  }
-
-  .darkModeContainer {
-    background-color: $dark-mode-bg-color;
-    &:hover {
-      background-color: $dark-mode-bg-color-hover;
-    }
-  }
-
-  .lightModeContainer {
-    background-color: $light-mode-bg-color;
-    &:hover {
-      background-color: $light-mode-bg-color-hover;
-    }
-  }
-
-  .darkModeMenuBarContainer {
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    &:hover {
-      background-color: #29292b;
-    }
-  }
-
-  .lightModeMenuBarContainer {
-    border: 1px solid #e2e8f0;
-    &:hover {
-      background-color: rgb(225, 242, 247);
     }
   }
 
@@ -282,26 +309,45 @@ export default defineComponent({
     position: absolute;
     display: flex;
     right: 8px;
+    overflow-y: hidden;
   }
 
   .menu-bar-container {
     display: none;
     position: absolute;
-    right: 5px;
+    width: 220px;
+    right: 9px;
     top: 55px;
     margin: 0;
     min-width: max-content;
     border-radius: 0.375rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
-    div {
-      width: 200px;
-      height: 35px;
+    .menu-bar-item {
       display: flex;
       align-items: center;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-left: 15px;
+      padding-top: 9px;
+      padding-bottom: 9px;
       cursor: pointer;
+      font-size: 16px;
+      font-weight: 0;
+
+      a {
+        text-decoration: none;
+        font-weight: 200;
+      }
+
+      &:hover {
+        outline: 2px solid $active-navbar;
+        background-color: $background-color-light-mode-navbar;
+      }
+
+      &:focus {
+        outline: 2px solid $active-navbar;
+        background-color: $background-color-light-mode-navbar;
+      }
     }
   }
 }

@@ -10,13 +10,13 @@ import NavBar from '@/components/NavBar.vue';
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
 #app {
   background-color: $background-color-dark-mode;
   color: $text-color-dark-mode;
   height: 100vh;
-  font-family: 'OpenSans', sans-serif;
+  font-family: 'OpenSansCondensed', sans-serif;
 }
 #container {
   text-align: center;
