@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue';
+import Header from '@/components/Header.vue';
 </script>
 
 <template>
   <div id="container">
     <NavBar />
+    <Header />
     <router-view />
   </div>
 </template>
@@ -21,6 +23,6 @@ import NavBar from '@/components/NavBar.vue';
 #container {
   text-align: center;
   margin: auto;
-  max-width: 760px;
+  max-width: $screen-max-width;
 }
 </style>
